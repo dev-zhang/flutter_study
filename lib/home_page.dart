@@ -7,6 +7,7 @@ import 'package:flutter_study/debounce/debounce_page.dart';
 import 'package:flutter_study/shape/shape_page.dart';
 import 'package:flutter_study/throttle/throttle_page.dart';
 import 'package:flutter_study/ui_adaptation/ui_adaptation_page.dart';
+import 'package:flutter_study/vectorgraph/vectorgraph_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -74,6 +75,11 @@ class HomePage extends StatelessWidget {
             _buildItem(context, title: 'Shape', onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => ShapePage()),
+              );
+            }),
+            _buildItem(context, title: '矢量图', onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => VectorgraphPage()),
               );
             }),
           ],

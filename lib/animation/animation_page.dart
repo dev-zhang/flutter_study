@@ -1,54 +1,67 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_study/animation/animated_widget_page.dart';
+import 'package:flutter_study/animation/animationcontroller_page.dart';
+import 'package:flutter_study/constant/constant.dart';
 
-class AnimationPage extends StatefulWidget {
-  @override
-  _AnimationPageState createState() => _AnimationPageState();
-}
-
-class _AnimationPageState extends State<AnimationPage> {
-  bool _isSelected = false;
-
+class AnimationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        child: AppBar(),
-        preferredSize: Size.fromHeight(44),
+        child: AppBar(title: Text('Flutter animation')),
+        preferredSize: Size.fromHeight(kAppBarHeight),
       ),
       body: _buildBody(context),
     );
   }
 
   Widget _buildBody(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _isSelected = !_isSelected;
-        });
-      },
-      child: Center(
-        child: Container(
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 1000),
-            color: Colors.orangeAccent,
-            width: _isSelected ? 400 : 300,
-            height: _isSelected ? 300 : 250,
-            // curve: Cubic(0.18, 1, 0.04, 0.1),
-            curve: ShakeCurve(),
-          ),
+    return Center(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(
+            top: 20, bottom: MediaQuery.of(context).padding.bottom),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildItem(
+              context,
+              title: 'Animation<T>',
+              targetPage: AnimationControllerPage(),
+            ),
+            _buildItem(
+              context,
+              title: 'AnimatedWidget',
+              targetPage: AnimatedWidgetPage(),
+            ),
+          ],
         ),
       ),
     );
   }
-}
 
-class ShakeCurve extends Curve {
-  @override
-  double transform(double t) {
-    final v = sin(t * pi * 0.8);
-    print('======transform==t: $t, v: $v');
-    return v;
+  Widget _buildItem(
+    BuildContext context, {
+    @required String title,
+    @required Widget targetPage,
+  }) {
+    return Container(
+      width: 300,
+      height: 60,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => targetPage),
+          );
+        },
+        child: Card(
+          child: Center(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.title,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

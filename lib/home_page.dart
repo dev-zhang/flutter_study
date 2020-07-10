@@ -3,6 +3,7 @@ import 'package:flutter_study/animation/animation_page.dart';
 import 'package:flutter_study/bottom_tab/bottom_tab_page.dart';
 import 'package:flutter_study/bottom_tab/global_event_bus.dart';
 import 'package:flutter_study/color_recognition/color_recognition_page.dart';
+import 'package:flutter_study/container_type/container_type_list_page.dart';
 import 'package:flutter_study/debounce/debounce_page.dart';
 import 'package:flutter_study/shape/shape_page.dart';
 import 'package:flutter_study/throttle/throttle_page.dart';
@@ -82,6 +83,8 @@ class HomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => VectorgraphPage()),
               );
             }),
+            _buildItem(context,
+                title: '容器类组件', targetPage: ContainerTypeListPage()),
           ],
         ),
       ),
@@ -92,12 +95,21 @@ class HomePage extends StatelessWidget {
     BuildContext context, {
     @required String title,
     void Function() onTap,
+    Widget targetPage,
   }) {
     return Container(
       width: 300,
       height: 60,
       child: InkWell(
-        onTap: onTap,
+        onTap: onTap ??
+            () {
+              if (targetPage == null) {
+                return;
+              }
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => targetPage),
+              );
+            },
         child: Card(
           color: Color(0xff426ab3),
           child: Center(

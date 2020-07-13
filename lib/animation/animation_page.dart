@@ -4,6 +4,7 @@ import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
 import 'package:flutter_study/animation/hero_page.dart';
 import 'package:flutter_study/animation/route_animation_page.dart';
+import 'package:flutter_study/animation/stagger_animation_page.dart';
 import 'package:flutter_study/constant/constant.dart';
 
 class AnimationPage extends StatelessWidget {
@@ -50,6 +51,11 @@ class AnimationPage extends StatelessWidget {
               context,
               title: 'Hero',
               targetPage: HeroPage(),
+            ),
+            _buildItem(
+              context,
+              title: '交织动画',
+              targetPage: StaggerAnimationPage(),
             ),
           ],
         ),

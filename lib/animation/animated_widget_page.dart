@@ -39,8 +39,16 @@ class _AnimatedWidgetPageState extends State<AnimatedWidgetPage>
 
   Widget _buildBody(BuildContext context) {
     return Center(
-      child: AnimatedImage(
-        animation: _animationController,
+      child: Column(
+        children: <Widget>[
+          AnimatedImage(
+            animation: _animationController,
+          ),
+          GrowTransition(
+            child: Image.asset('assets/images/uzumaki_naruto-011.jpg'),
+            animation: _animationController,
+          )
+        ],
       ),
     );
   }
@@ -60,6 +68,31 @@ class AnimatedImage extends AnimatedWidget {
       'assets/images/uzumaki_naruto-011.jpg',
       width: MediaQuery.of(context).size.width * _scale.value,
       height: MediaQuery.of(context).size.width * _scale.value,
+    );
+  }
+}
+
+class GrowTransition extends AnimatedWidget {
+  const GrowTransition({
+    Key key,
+    @required this.child,
+    @required Animation<double> animation,
+  })  : assert(child != null),
+        assert(animation != null),
+        super(key: key, listenable: animation);
+
+  final Widget child;
+
+  Animation<double> get sizeFactor => listenable;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRect(
+      child: Align(
+        child: child,
+        widthFactor: sizeFactor.value,
+        heightFactor: sizeFactor.value,
+      ),
     );
   }
 }

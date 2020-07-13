@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/animation/animated_builder_page.dart';
 import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
+import 'package:flutter_study/animation/route_animation_page.dart';
 import 'package:flutter_study/constant/constant.dart';
 
 class AnimationPage extends StatelessWidget {
@@ -32,6 +34,16 @@ class AnimationPage extends StatelessWidget {
               context,
               title: 'AnimatedWidget',
               targetPage: AnimatedWidgetPage(),
+            ),
+            _buildItem(
+              context,
+              title: 'AnimatedBuilder',
+              targetPage: AnimatedBuilderPage(),
+            ),
+            _buildItem(
+              context,
+              title: '路由动画',
+              targetPage: RouteAnimationPage(),
             ),
           ],
         ),

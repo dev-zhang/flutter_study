@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/shape/custom_shape/coupon_shape_border.dart';
+import 'package:flutter_study/shape/custom_shape/custom_card_border.dart';
 import 'package:flutter_study/shape/custom_shape/custom_circle_shape.dart';
 import 'package:flutter_study/shape/custom_shape/custom_rounded_shape.dart';
 import 'package:flutter_study/shape/custom_shape/hole_shape_border.dart';
@@ -35,6 +36,7 @@ class CustomShapePage extends StatelessWidget {
       _buildCouponShape(),
       _buildCard(),
       _buildClipPath(),
+      _buildDecoration(),
     ];
     return ListView.separated(
       itemBuilder: (context, index) {
@@ -134,6 +136,22 @@ class CustomShapePage extends StatelessWidget {
           'https://cdn.pixabay.com/photo/2020/06/29/10/08/ballet-5352231_1280.jpg',
           // 'https://cdn.pixabay.com/photo/2020/06/30/22/34/dog-5357794__480.jpg',
           fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDecoration() {
+    return Material(
+      shape: CustomCardBorder(),
+      clipBehavior: Clip.antiAlias,
+      child: Container(
+        height: 200,
+        decoration: BoxDecoration(
+          color: Colors.orangeAccent,
+        ),
+        foregroundDecoration: BoxDecoration(
+          color: Colors.blueAccent.withAlpha(80),
         ),
       ),
     );

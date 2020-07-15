@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/animation/animated_builder_page.dart';
+import 'package:flutter_study/animation/animated_switcher_page.dart';
 import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
 import 'package:flutter_study/animation/hero_page.dart';
@@ -56,6 +57,11 @@ class AnimationPage extends StatelessWidget {
               context,
               title: '交织动画',
               targetPage: StaggerAnimationPage(),
+            ),
+            _buildItem(
+              context,
+              title: 'AnimatedSwitcher',
+              targetPage: AnimatedSwitcherPage(),
             ),
           ],
         ),

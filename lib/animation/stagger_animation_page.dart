@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/constant/constant.dart';
 
+import 'animated_favorite_icon.dart';
+
 class StaggerAnimationPage extends StatefulWidget {
   @override
   _StaggerAnimationPageState createState() => _StaggerAnimationPageState();
@@ -9,6 +11,9 @@ class StaggerAnimationPage extends StatefulWidget {
 class _StaggerAnimationPageState extends State<StaggerAnimationPage>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
+
+  // 是否已收藏
+  bool _isFavorited = false;
 
   @override
   void initState() {
@@ -48,19 +53,44 @@ class _StaggerAnimationPageState extends State<StaggerAnimationPage>
   }
 
   Widget _buildBody(BuildContext context) {
-    return GestureDetector(
-      onTap: _playOrStopAnimation,
-      child: Center(
-        child: Container(
-          width: 300,
-          height: 300,
-          decoration: BoxDecoration(
-            color: Colors.orange[50],
-            border: Border.all(),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        GestureDetector(
+          onTap: _playOrStopAnimation,
+          child: Center(
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.orange[50],
+                border: Border.all(),
+              ),
+              child: ZYAnimatedContainer(
+                animationController: _animationController,
+              ),
+            ),
           ),
-          child: ZYAnimatedContainer(
-            animationController: _animationController,
-          ),
+        ),
+        Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+        _buildCustomFavoriteButton(context),
+      ],
+    );
+  }
+
+  Widget _buildCustomFavoriteButton(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: FlatButton(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: () {
+          setState(() {
+            _isFavorited = !_isFavorited;
+          });
+        },
+        child: AnimatedFavoriteIcon(
+          selected: _isFavorited,
         ),
       ),
     );
@@ -103,7 +133,7 @@ class _ZYAnimatedContainerState extends State<ZYAnimatedContainer> {
       ),
     );
     _padding =
-        EdgeInsetsTween(begin: EdgeInsets.zero, end: EdgeInsets.only(left: 50))
+        EdgeInsetsTween(begin: EdgeInsets.zero, end: EdgeInsets.only(left: 90))
             .animate(
       CurvedAnimation(
         parent: _animationController,

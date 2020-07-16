@@ -4,6 +4,7 @@ import 'package:flutter_study/animation/animated_switcher_page.dart';
 import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
 import 'package:flutter_study/animation/hero_page.dart';
+import 'package:flutter_study/animation/rolling_number_example_page.dart';
 import 'package:flutter_study/animation/route_animation_page.dart';
 import 'package:flutter_study/animation/stagger_animation_page.dart';
 import 'package:flutter_study/constant/constant.dart';
@@ -62,6 +63,11 @@ class AnimationPage extends StatelessWidget {
               context,
               title: 'AnimatedSwitcher',
               targetPage: AnimatedSwitcherPage(),
+            ),
+            _buildItem(
+              context,
+              title: '滚动的数字',
+              targetPage: RollingNumberExamplePage(),
             ),
           ],
         ),

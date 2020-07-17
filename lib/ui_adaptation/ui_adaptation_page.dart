@@ -20,7 +20,6 @@ class _UIAdaptationPageState extends State<UIAdaptationPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    final query = MediaQuery.of(context);
     final rpx = MediaQuery.of(context).size.width / 414;
     return SafeArea(
       child: Column(

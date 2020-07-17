@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_study/bottom_tab/global_event_bus.dart';
 
 class TabStudyPage extends StatefulWidget {

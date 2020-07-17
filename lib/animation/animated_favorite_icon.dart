@@ -87,21 +87,21 @@ class _AnimatedFavoriteIconState extends State<AnimatedFavoriteIcon>
           opacity: _starOpacity,
           child: ScaleTransition(
             scale: _starScale,
-            child: SvgPicture.asset('assets/images/favorite_stars.svg'),
+            child: SvgPicture.asset('assets/svgs/favorite_stars.svg'),
           ),
         ),
         FadeTransition(
           opacity: _selectedIconOpacity,
           child: ScaleTransition(
             scale: _selectedIconScale,
-            child: SvgPicture.asset('assets/images/favorite_selected.svg'),
+            child: SvgPicture.asset('assets/svgs/favorite_selected.svg'),
           ),
         ),
         FadeTransition(
           opacity: _normalIconOpacity,
           child: ScaleTransition(
             scale: _normalIconScale,
-            child: SvgPicture.asset('assets/images/favorite_normal.svg'),
+            child: SvgPicture.asset('assets/svgs/favorite_normal.svg'),
           ),
         ),
       ],

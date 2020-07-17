@@ -58,7 +58,7 @@ class _VectorgraphPageState extends State<VectorgraphPage> {
                     child: AspectRatio(
                       aspectRatio: 1,
                       child: SvgPicture.asset(
-                        'assets/images/img_add_pic.svg',
+                        'assets/svgs/img_add_pic.svg',
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -70,7 +70,7 @@ class _VectorgraphPageState extends State<VectorgraphPage> {
                     child: AspectRatio(
                       aspectRatio: 1,
                       child: SvgPicture.asset(
-                        'assets/images/img_grade_a.svg',
+                        'assets/svgs/img_grade_a.svg',
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -82,7 +82,7 @@ class _VectorgraphPageState extends State<VectorgraphPage> {
                     child: AspectRatio(
                       aspectRatio: 1,
                       child: SvgPicture.asset(
-                        'assets/images/img_play.svg',
+                        'assets/svgs/img_play.svg',
                         fit: BoxFit.contain,
                       ),
                     ),

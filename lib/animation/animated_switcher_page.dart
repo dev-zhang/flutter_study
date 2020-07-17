@@ -70,9 +70,9 @@ class _AnimatedSwitcherPageState extends State<AnimatedSwitcherPage> {
   }
 
   Widget _buildFavoriteButton(BuildContext context) {
-    String src = 'assets/images/favorite_normal.svg';
+    String src = 'assets/svgs/favorite_normal.svg';
     if (_isFavorited) {
-      src = 'assets/images/favorite_selected.svg';
+      src = 'assets/svgs/favorite_selected.svg';
     }
     return Container(
       margin: EdgeInsets.all(20),

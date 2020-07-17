@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/animation/animated_builder_page.dart';
+import 'package:flutter_study/animation/animated_indicator_page.dart';
 import 'package:flutter_study/animation/animated_switcher_page.dart';
 import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
@@ -68,6 +69,11 @@ class AnimationPage extends StatelessWidget {
               context,
               title: '滚动的数字',
               targetPage: RollingNumberExamplePage(),
+            ),
+            _buildItem(
+              context,
+              title: '带动画的指示器',
+              targetPage: AnimatedIndicatorPage(),
             ),
           ],
         ),

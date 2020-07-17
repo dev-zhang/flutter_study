@@ -111,14 +111,10 @@ class HomePage extends StatelessWidget {
               );
             },
         child: Card(
-          color: Color(0xff426ab3),
           child: Center(
             child: Text(
               title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
+              style: Theme.of(context).textTheme.button,
             ),
           ),
         ),

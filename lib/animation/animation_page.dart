@@ -99,7 +99,7 @@ class AnimationPage extends StatelessWidget {
           child: Center(
             child: Text(
               title,
-              style: Theme.of(context).textTheme.title,
+              style: Theme.of(context).textTheme.button,
             ),
           ),
         ),

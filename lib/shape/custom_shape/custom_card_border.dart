@@ -16,7 +16,7 @@ class CustomCardBorder extends ShapeBorder {
     // 左边一个正方形
     path.addRRect(
       RRect.fromRectAndCorners(
-        Rect.fromLTWH(0, 0, rect.height, rect.height),
+        Rect.fromLTWH(rect.left, rect.top, rect.height, rect.height),
         topLeft: Radius.circular(10),
         topRight: Radius.circular(10),
         bottomLeft: Radius.circular(10),
@@ -25,7 +25,8 @@ class CustomCardBorder extends ShapeBorder {
     // 右侧一个矩形
     path.addRRect(
       RRect.fromRectAndCorners(
-        Rect.fromLTRB(rect.height, 18, rect.width, rect.height),
+        Rect.fromLTRB(
+            rect.left + rect.height, rect.top + 18, rect.right, rect.bottom),
         topRight: Radius.circular(10),
         bottomRight: Radius.circular(10),
       ),

@@ -10,7 +10,7 @@ class AnimatedIndicatorPage extends StatefulWidget {
 }
 
 class _AnimatedIndicatorPageState extends State<AnimatedIndicatorPage> {
-  double _progress;
+  double _progress = 0.11;
 
   @override
   Widget build(BuildContext context) {

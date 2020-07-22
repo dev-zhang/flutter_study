@@ -94,12 +94,10 @@ class _AnimatedCircularProgressIndicatorState
     if (widget.value != oldWidget.value && widget.value != null) {
       // update
       double oldValue = oldWidget.value ?? 0;
-      double bouncingValue = widget.value *
-          (1 +
-              (10 / 100) *
-                  (widget.value - oldValue) /
-                  (widget.value - oldValue).abs());
-      bouncingValue = bouncingValue.clamp(0, 1).toDouble();
+      double bouncingValue = widget.value +
+          (10 / 100) *
+              ((widget.value - oldValue) / (widget.value - oldValue).abs());
+      bouncingValue = bouncingValue.clamp(0.0, 1.0).toDouble();
       _progressAnimation = TweenSequence(
         <TweenSequenceItem<double>>[
           TweenSequenceItem(

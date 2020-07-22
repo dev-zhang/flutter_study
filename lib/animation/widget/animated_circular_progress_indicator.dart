@@ -28,6 +28,8 @@ class AnimatedCircularProgressIndicator extends ProgressIndicator {
     Animation<Color> valueColor,
     this.strokeWidth,
     @required this.duration,
+    this.strokeCap,
+    this.startAngle,
     String semanticsLabel,
     String semanticsValue,
   })  : assert(duration != null),
@@ -41,7 +43,14 @@ class AnimatedCircularProgressIndicator extends ProgressIndicator {
         );
 
   final double strokeWidth;
+
+  /// 动画时长
   final Duration duration;
+
+  final StrokeCap strokeCap;
+
+  /// 起点的角度，默认为`-math.pi / 2.0`
+  final double startAngle;
 
   @override
   _AnimatedCircularProgressIndicatorState createState() =>
@@ -171,6 +180,8 @@ class _AnimatedCircularProgressIndicatorState
             stepValue: stepValue,
             rotationValue: rotationValue,
             strokeWidth: widget.strokeWidth,
+            strokeCap: widget.strokeCap,
+            startAngle: widget.startAngle,
           ),
         ),
       ),
@@ -203,9 +214,11 @@ class _CircularProgressIndicatorPainter extends CustomPainter {
     this.stepValue,
     this.rotationValue,
     this.strokeWidth,
+    this.strokeCap,
+    double startAngle,
   })  : arcStart = value != null
-            ? _startAngle
-            : _startAngle +
+            ? (startAngle ?? _startAngle)
+            : (startAngle ?? _startAngle) +
                 tailValue * 3 / 2 * math.pi +
                 rotationValue * math.pi * 1.7 -
                 stepValue * 0.8 * math.pi,
@@ -226,6 +239,8 @@ class _CircularProgressIndicatorPainter extends CustomPainter {
   final double arcStart;
   final double arcSweep;
 
+  final StrokeCap strokeCap;
+
   static const double _twoPi = math.pi * 2.0;
   static const double _epsilon = .001;
   // Canvas.drawArc(r, 0, 2*PI) doesn't draw anything, so just get close.
@@ -234,25 +249,34 @@ class _CircularProgressIndicatorPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    final Rect innerRect = Rect.fromCenter(
+      center: size.center(Offset.zero),
+      width: size.width - strokeWidth,
+      height: size.height - strokeWidth,
+    );
+
     final Paint paint = Paint()
       ..color = valueColor
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
+
     if (backgroundColor != null) {
       final Paint backgroundPaint = Paint()
         ..color = backgroundColor
         ..strokeWidth = strokeWidth
         ..style = PaintingStyle.stroke;
-      canvas.drawArc(Offset.zero & size, 0, _sweep, false, backgroundPaint);
+      canvas.drawArc(innerRect, 0, _sweep, false, backgroundPaint);
     }
 
     if (value == null) // Indeterminate
       paint.strokeCap = StrokeCap.square;
 
-    // 端点形状，圆形
-    paint.strokeCap = StrokeCap.round;
+    if (strokeCap != null) {
+      // 端点点形状
+      paint.strokeCap = strokeCap;
+    }
 
-    canvas.drawArc(Offset.zero & size, arcStart, arcSweep, false, paint);
+    canvas.drawArc(innerRect, arcStart, arcSweep, false, paint);
   }
 
   @override
@@ -264,6 +288,7 @@ class _CircularProgressIndicatorPainter extends CustomPainter {
         oldPainter.tailValue != tailValue ||
         oldPainter.stepValue != stepValue ||
         oldPainter.rotationValue != rotationValue ||
-        oldPainter.strokeWidth != strokeWidth;
+        oldPainter.strokeWidth != strokeWidth ||
+        oldPainter.strokeCap != strokeCap;
   }
 }

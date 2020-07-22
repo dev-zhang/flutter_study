@@ -39,14 +39,19 @@ class _AnimatedIndicatorPageState extends State<AnimatedIndicatorPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                width: 200,
-                height: 200,
-                child: AnimatedCircularProgressIndicator(
-                  duration: Duration(milliseconds: 400),
-                  value: _progress,
-                  strokeWidth: 18,
-                  backgroundColor: Colors.orange,
+              ClipRect(
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.grey,
+                  child: AnimatedCircularProgressIndicator(
+                    duration: Duration(milliseconds: 400),
+                    value: _progress,
+                    strokeWidth: 18,
+                    backgroundColor: Colors.orange,
+                    strokeCap: StrokeCap.round,
+                    startAngle: 0,
+                  ),
                 ),
               ),
               SizedBox(height: 20),

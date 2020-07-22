@@ -63,28 +63,16 @@ class HomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => ThrottlePage()),
               );
             }),
-            _buildItem(context, title: 'UI适配', onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => UIAdaptationPage()),
-              );
-            }),
-            _buildItem(context, title: '动画', onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => AnimationPage()),
-              );
-            }),
             _buildItem(context, title: 'Shape', onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => ShapePage()),
               );
             }),
-            _buildItem(context, title: '矢量图', onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => VectorgraphPage()),
-              );
-            }),
+            _buildItem(context, title: '矢量图', targetPage: VectorgraphPage()),
             _buildItem(context,
                 title: '容器类组件', targetPage: ContainerTypeListPage()),
+            _buildItem(context, title: 'UI适配', targetPage: UIAdaptationPage()),
+            _buildItem(context, title: '动画', targetPage: AnimationPage()),
           ],
         ),
       ),

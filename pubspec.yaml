@@ -26,6 +26,8 @@ dependencies:
   color_thief_flutter: ^1.0.2
   event_bus: ^1.1.1
   flutter_svg: ^0.17.4
+  provider: ^4.0.5+1
+
 
 dev_dependencies:
   flutter_test:

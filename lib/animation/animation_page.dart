@@ -4,6 +4,7 @@ import 'package:flutter_study/animation/animated_indicator_page.dart';
 import 'package:flutter_study/animation/animated_switcher_page.dart';
 import 'package:flutter_study/animation/animated_widget_page.dart';
 import 'package:flutter_study/animation/animationcontroller_page.dart';
+import 'package:flutter_study/animation/card_example/grid_view_interaction_page.dart';
 import 'package:flutter_study/animation/hero_page.dart';
 import 'package:flutter_study/animation/rolling_number_example_page.dart';
 import 'package:flutter_study/animation/route_animation_page.dart';
@@ -74,6 +75,11 @@ class AnimationPage extends StatelessWidget {
               context,
               title: '带动画的指示器',
               targetPage: AnimatedIndicatorPage(),
+            ),
+            _buildItem(
+              context,
+              title: '列表交互动画实例',
+              targetPage: GridViewInteractionPage(),
             ),
           ],
         ),

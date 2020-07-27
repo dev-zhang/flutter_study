@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_study/animation/widget/progressive_number.dart';
 import 'package:flutter_study/constant/constant.dart';
 
 class RollingNumberExamplePage extends StatefulWidget {
@@ -69,7 +70,9 @@ class _RollingNumberExamplePageState extends State<RollingNumberExamplePage>
               _animationController.duration =
                   Duration(milliseconds: milliseconds);
               _animationController.forward(from: 0);
-              _count = _newCount;
+              setState(() {
+                _count = _newCount;
+              });
             },
             child: Icon(
               Icons.refresh,
@@ -103,6 +106,27 @@ class _RollingNumberExamplePageState extends State<RollingNumberExamplePage>
                 ),
               );
             },
+          ),
+          SizedBox(height: 20),
+          ProgressiveNumber(
+            _count,
+            builder: (_, count) {
+              return Text(
+                '$count',
+                style: TextStyle(
+                  fontSize: 38,
+                ),
+              );
+            },
+          ),
+          DefaultTextStyle(
+            style: TextStyle(
+              fontSize: 38,
+              color: Colors.black,
+            ),
+            child: ProgressiveNumber(
+              _count,
+            ),
           ),
         ],
       ),

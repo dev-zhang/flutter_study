@@ -5,7 +5,8 @@ class AnimatedFavoriteIcon extends StatefulWidget {
   const AnimatedFavoriteIcon({
     Key key,
     this.selected = false,
-  }) : super(key: key);
+  })  : assert(selected != null),
+        super(key: key);
 
   /// 是否是选中的
   final bool selected;
@@ -71,7 +72,6 @@ class _AnimatedFavoriteIconState extends State<AnimatedFavoriteIcon>
   void didUpdateWidget(AnimatedFavoriteIcon oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    // print('======didUpdate widget');
     if (widget.selected != oldWidget.selected) {
       // 需要刷新
       _updateTransition();

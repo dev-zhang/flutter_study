@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/constant/constant.dart';
 
-import 'animated_favorite_icon.dart';
+import 'widget/animated_favorite_icon.dart';
 
 class StaggerAnimationPage extends StatefulWidget {
   @override

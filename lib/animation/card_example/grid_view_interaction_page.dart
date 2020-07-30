@@ -44,7 +44,9 @@ class _GridViewInteractionPageState extends State<GridViewInteractionPage> {
       child: SizedBox.expand(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
+            SizedBox(height: 10),
             Text(
               '多吃水果，有益健康',
               style: TextStyle(
@@ -57,6 +59,7 @@ class _GridViewInteractionPageState extends State<GridViewInteractionPage> {
               size: 45,
               color: Colors.orange,
             ),
+            Spacer(),
             Consumer<AnimationProvider>(
               builder: (BuildContext context, AnimationProvider provider,
                   Widget child) {
@@ -107,27 +110,30 @@ class _GridViewInteractionPageState extends State<GridViewInteractionPage> {
                 );
               },
             ),
-            GridView.builder(
-              itemCount: _datas.length,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 13,
-                mainAxisSpacing: 17,
-                childAspectRatio: 156.0 / 104.0,
+            // SizedBox(height: 10),
+            Expanded(
+              child: GridView.builder(
+                itemCount: _datas.length,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 13,
+                  mainAxisSpacing: 17,
+                  childAspectRatio: 156.0 / 104.0,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return ImageCard(
+                    model: _datas[index],
+                    index: index,
+                    onTap: () {
+                      // _nextQuestion();
+                      // _showDetailPage(context);
+                    },
+                  );
+                },
               ),
-              itemBuilder: (BuildContext context, int index) {
-                return ImageCard(
-                  model: _datas[index],
-                  index: index,
-                  onTap: () {
-                    // _nextQuestion();
-                    // _showDetailPage(context);
-                  },
-                );
-              },
             ),
           ],
         ),

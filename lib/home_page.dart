@@ -5,6 +5,7 @@ import 'package:flutter_study/bottom_tab/global_event_bus.dart';
 import 'package:flutter_study/color_recognition/color_recognition_page.dart';
 import 'package:flutter_study/container_type/container_type_list_page.dart';
 import 'package:flutter_study/debounce/debounce_page.dart';
+import 'package:flutter_study/edge_insets/edge_insets_page.dart';
 import 'package:flutter_study/shape/shape_page.dart';
 import 'package:flutter_study/throttle/throttle_page.dart';
 import 'package:flutter_study/ui_adaptation/ui_adaptation_page.dart';
@@ -73,6 +74,8 @@ class HomePage extends StatelessWidget {
                 title: '容器类组件', targetPage: ContainerTypeListPage()),
             _buildItem(context, title: 'UI适配', targetPage: UIAdaptationPage()),
             _buildItem(context, title: '动画', targetPage: AnimationPage()),
+            _buildItem(context,
+                title: 'EdgeInsetsGeometry', targetPage: EdgeInsetsPage()),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/animation/animation_page.dart';
+import 'package:flutter_study/basic/anonymous_function_page.dart';
 import 'package:flutter_study/bottom_tab/bottom_tab_page.dart';
 import 'package:flutter_study/bottom_tab/global_event_bus.dart';
 import 'package:flutter_study/color_recognition/color_recognition_page.dart';
@@ -76,6 +77,8 @@ class HomePage extends StatelessWidget {
             _buildItem(context, title: '动画', targetPage: AnimationPage()),
             _buildItem(context,
                 title: 'EdgeInsetsGeometry', targetPage: EdgeInsetsPage()),
+            _buildItem(context,
+                title: '匿名函数', targetPage: AnonymousFunctionPage()),
           ],
         ),
       ),

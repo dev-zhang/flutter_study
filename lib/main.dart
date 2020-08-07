@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter study',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         cardColor: Color(0xff426ab3),
         primaryTextTheme: TextTheme(
